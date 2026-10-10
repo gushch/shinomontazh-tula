@@ -1,7 +1,7 @@
 # Вход через GitHub. Замените ВАШ_ЛОГИН на логин владельца репозитория.
 backend:
   name: github
-  repo: gushch/shinomontazh-tula
+  repo: ВАШ_ЛОГИН/shinomontazh-tula
   branch: main
 
 # Для проверки на своём компьютере: npx decap-server, затем http://localhost:.../admin/
@@ -21,31 +21,13 @@ collections:
       - name: site
         label: Цены, точки и контакты
         file: content/site.json
+        # Поля идут в том же порядке, что и блоки на сайте
         fields:
-          - label: Телефон на сайте
-            name: phone
-            widget: string
-            hint: Как показывать посетителям, например +7 (905) 189-58-95
-
-          - label: WhatsApp для заявок
-            name: whatsapp
-            widget: string
-            hint: Только цифры, 11 штук, начиная с 7. Например 79051895895
-            pattern: ['^7\d{10}$', 'Нужно 11 цифр, первая — 7, без пробелов и плюса']
-
+          # Услуги и цены
           - label: Подпись под ценами
             name: prices_note
             widget: string
             required: false
-
-          - label: Карточки преимуществ
-            name: features
-            widget: list
-            summary: '{{fields.title}}'
-            hint: Блок с карточками между записью и отзывами. Удалите все, чтобы скрыть блок
-            fields:
-              - { label: Заголовок, name: title, widget: string }
-              - { label: Текст, name: text, widget: string, required: false }
 
           - label: Цены
             name: prices
@@ -61,11 +43,39 @@ collections:
             widget: list
             field: { label: Услуга, name: item, widget: string }
 
+          # Онлайн-запись
           - label: Услуги в форме записи
             name: booking_services
             widget: list
             field: { label: Услуга, name: item, widget: string }
 
+          - label: WhatsApp для заявок
+            name: whatsapp
+            widget: string
+            hint: Сюда приходят заявки с сайта. Только цифры, 11 штук, начиная с 7. Например 79051895895
+            pattern: ['^7\d{10}$', 'Нужно 11 цифр, первая — 7, без пробелов и плюса']
+
+          # Преимущества
+          - label: Карточки преимуществ
+            name: features
+            widget: list
+            summary: '{{fields.title}}'
+            hint: Удалите все карточки, чтобы скрыть блок
+            fields:
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Текст, name: text, widget: string, required: false }
+
+          # Фото
+          - label: Фотографии
+            name: photos
+            widget: list
+            summary: '{{fields.alt}}'
+            hint: Блок появится на сайте, когда добавите первое фото
+            fields:
+              - { label: Фото, name: image, widget: image }
+              - { label: Подпись, name: alt, widget: string, required: false }
+
+          # Контакты
           - label: Точки
             name: points
             widget: list
@@ -77,10 +87,7 @@ collections:
               - { label: Особые часы, name: hours_extra, widget: string, required: false, hint: 'Например Ноябрь и декабрь: 9:00–00:00. Оставьте пустым, если не нужно' }
               - { label: Ссылка на Яндекс Карты, name: map, widget: string, required: false }
 
-          - label: Фотографии
-            name: photos
-            widget: list
-            summary: '{{fields.alt}}'
-            fields:
-              - { label: Фото, name: image, widget: image }
-              - { label: Подпись, name: alt, widget: string, required: false }
+          - label: Телефон на сайте
+            name: phone
+            widget: string
+            hint: Показывается в шапке и в контактах, например +7 (905) 189-58-95
