@@ -249,14 +249,9 @@
     </div>
   </section>
 
-  <section>
+  <section id="featuresSection" hidden>
     <div class="wrap">
-      <div class="grid">
-        <div class="card"><h3>Без очередей</h3><p>Принимаем по записи и без неё</p></div>
-        <div class="card"><h3>Балансировка</h3><p>Каждое колесо, проверка давления</p></div>
-        <div class="card"><h3>Без навязывания</h3><p>Только то, что нужно машине</p></div>
-        <div class="card"><h3>Оплата</h3><p>Карта, наличные, СБП. Есть Wi-Fi</p></div>
-      </div>
+      <div class="grid" id="features"></div>
     </div>
   </section>
 
@@ -343,6 +338,15 @@
       row.append(name, el("div", isNumber ? "price" : "price ask", p.price));
       list.append(row);
     });
+
+    const features = data.features || [];
+    document.getElementById("features").replaceChildren(...features.map((f) => {
+      const card = el("div", "card");
+      card.append(el("h3", "", f.title));
+      if (f.text) card.append(el("p", "", f.text));
+      return card;
+    }));
+    document.getElementById("featuresSection").hidden = features.length === 0;
 
     const extras = document.getElementById("extras");
     extras.replaceChildren(...(data.extras || []).map((x) => el("span", "chip", x)));
