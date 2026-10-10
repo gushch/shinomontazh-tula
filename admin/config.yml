@@ -1,7 +1,7 @@
 # Вход через GitHub. Замените ВАШ_ЛОГИН на логин владельца репозитория.
 backend:
   name: github
-  repo: ВАШ_ЛОГИН/shinomontazh-tula
+  repo: gushch/shinomontazh-tula
   branch: main
 
 # Для проверки на своём компьютере: npx decap-server, затем http://localhost:.../admin/
