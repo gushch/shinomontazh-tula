@@ -79,5 +79,9 @@
       "map": "https://yandex.ru/maps/15/tula/search/Тула, посёлок Петровский, улица Маршала Полубоярова/"
     }
   ],
-  "photos": []
+  "photos": [
+    {
+      "image": "/images/uploads/fiverr_gig_en_ru.png"
+    }
+  ]
 }
