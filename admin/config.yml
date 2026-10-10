@@ -1,7 +1,7 @@
 # Вход через GitHub. Замените ВАШ_ЛОГИН на логин владельца репозитория.
 backend:
   name: github
-  repo: gushch/shinomontazh-tula
+  repo: ВАШ_ЛОГИН/shinomontazh-tula
   branch: main
 
 # Для проверки на своём компьютере: npx decap-server, затем http://localhost:.../admin/
@@ -37,6 +37,15 @@ collections:
             name: prices_note
             widget: string
             required: false
+
+          - label: Карточки преимуществ
+            name: features
+            widget: list
+            summary: '{{fields.title}}'
+            hint: Блок с карточками между записью и отзывами. Удалите все, чтобы скрыть блок
+            fields:
+              - { label: Заголовок, name: title, widget: string }
+              - { label: Текст, name: text, widget: string, required: false }
 
           - label: Цены
             name: prices
