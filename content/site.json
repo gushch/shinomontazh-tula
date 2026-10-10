@@ -81,7 +81,8 @@
   ],
   "photos": [
     {
-      "image": "/images/uploads/fiverr_gig_en_ru.png"
+      "image": "/images/uploads/fiverr_gig_en_ru.png",
+      "alt": "fyfyfc"
     }
   ]
 }
